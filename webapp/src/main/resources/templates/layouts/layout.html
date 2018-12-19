@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" ng-app="UserWebApp">
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      ng-app="UserWebApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>WSPlanning - User web application</title>
+    <title>Digital Workshop Planner</title>
 
     <!-- Global stylesheets -->
     <link href="/assets/css/google-font/css.css" rel="stylesheet" type="text/css">
@@ -39,8 +40,6 @@
     <script type="text/javascript" src="/assets/js/plugins/ui/drilldown.js"></script>
     <!-- /core JS files -->
 
-
-
     <!-- Theme JS files -->
     <script type="text/javascript" src="/assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
     <script type="text/javascript" src="/assets/js/plugins/inputmask/jquery.inputmask.bundle.js"></script>
@@ -55,10 +54,6 @@
 
     <!-- Angular JS files -->
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular.min.js"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.9/angular-material.min.js"></script>
-
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/checklist-model.js"></script>
@@ -72,13 +67,10 @@
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/interactions.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/fancytree_all.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/fancytree_childcounter.js"></script>
-
     <!-- /angular JS files -->
 
     <script type="text/javascript" src="/assets/js/multiselect/select.js"></script>
     <link href="/assets/js/multiselect/select.css" rel="stylesheet" type="text/css">
-
-    <script type="text/javascript" src="/wsplanning/login.app.js"></script>
 
     <!--<script type="text/javascript" src="/assets/js/core/app.js"></script>-->
     <script type="text/javascript" src="/assets/js/limitless/app.js"></script>
@@ -92,54 +84,52 @@
     <script type="text/javascript" src="/wsplanning/app.directive.js"></script>
     <script type="text/javascript" src="/wsplanning/app.translate.js"></script>
 </head>
-
 <body class="navbar-bottom sidebar-xs">
-    <div class="preloader" id="preloader1">
-        <hr />
-        <hr />
-        <hr />
-        <hr />
-    </div>
-    <div class="preloader" id="preloader2">
-        <hr />
-        <hr />
-        <hr />
-        <hr />
-    </div>
+<div class="preloader" id="preloader1">
+    <hr/>
+    <hr/>
+    <hr/>
+    <hr/>
+</div>
+<div class="preloader" id="preloader2">
+    <hr/>
+    <hr/>
+    <hr/>
+    <hr/>
+</div>
 
-    <div th:replace="layouts/fragments/navbar::navbar"></div>
+<div th:replace="layouts/fragments/navbar::navbar"></div>
 
-    <!-- Page container -->
-    <div class="page-container">
+<!-- Page container -->
+<div class="page-container">
 
-        <!-- Page content -->
-        <div class="page-content">
+    <!-- Page content -->
+    <div class="page-content">
 
-            <div th:replace="layouts/fragments/sitebar::sitebar"></div>
+        <div th:replace="layouts/fragments/sitebar::sitebar"></div>
 
 
-            <!-- Main content -->
-            <div class="content-wrapper">
+        <!-- Main content -->
+        <div class="content-wrapper">
 
-                <div layout:fragment="content"></div>
-            </div>
-            <!-- /main content -->
-
+            <div layout:fragment="content"></div>
         </div>
-        <!-- /page content -->
+        <!-- /main content -->
+
     </div>
-    <!-- /page container -->
+    <!-- /page content -->
+</div>
+<!-- /page container -->
 
-    <!-- Footer -->
-    <div th:replace="layouts/fragments/footer::footer"></div>
-    <!-- /footer -->
+<!-- Footer -->
+<div th:replace="layouts/fragments/footer::footer"></div>
+<!-- /footer -->
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            console.log("ready!");
-            $(".formValidate").validate(common.formValidate);
-        });
-    </script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    console.log("ready!");
+    $(".formValidate").validate(common.formValidate);
+  });
+</script>
 </body>
-
 </html>
