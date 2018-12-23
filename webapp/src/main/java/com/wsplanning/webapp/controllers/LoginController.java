@@ -21,4 +21,6 @@ public class LoginController {
 //        request.getSession().setAttribute("url_prior_login", referrer);
         return "login";
     }
+
+    
 }

@@ -3,10 +3,14 @@
    (c) 2018 Olivier Giulieri
    http://evoluteur.github.io/colorpicker/
 */
+
+/* add background and border-radius in .evo-pop*/
 .evo-pop {
   z-index: 10000;
   width: 204px;
   padding: 3px 3px 0;
+  background: white;
+  border-radius: 5px;
 }
 .evo-pop-ie {
   z-index: 10000;
