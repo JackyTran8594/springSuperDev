@@ -19,7 +19,7 @@ public class ColorPicker {
     public static void jsonFileColorThemes(JsonObject obj) throws IOException {
         Path file = Paths.get("src/main/resources/static/colorPickerData.json");
         
-        JsonReader reader = Json. 
+        // JsonReader reader = Json. 
         if (file == null) {
             FileWriter jsonfile = new FileWriter(file.toString());
             jsonfile.write(obj.toString());

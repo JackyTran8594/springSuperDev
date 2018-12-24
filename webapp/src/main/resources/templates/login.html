@@ -17,10 +17,9 @@
     <!-- /global stylesheets -->
 
     <!-- color picker -->
-    <link type="text/css" rel="stylesheet" href="assets/css/colorpicker/demo.css">
-    </script>
-    <link type="text/css" rel="stylesheet" href="assets/css/colorpicker/evol-colorpicker.min.css">
-    </script>
+    <!-- <link type="text/css" rel="stylesheet" href="assets/css/colorpicker/demo.css"> -->
+
+    <link type="text/css" rel="stylesheet" href="assets/css/colorpicker/evol-colorpicker.css">
     <!-- /color picker -->
 
 
@@ -230,9 +229,12 @@
         }
 
         function onLogin() {
+            debugger;
+            writeLocalFile();
             if ($("#frmLogin").valid()) {
                 common.btnLoading($("#btnLogin"), true);
                 $("#frmLogin").submit();
+
             }
         }
 
@@ -241,7 +243,7 @@
             function setColor(evt, color) {
                 if (color) {
                     $('#cpEvent').css('background-color', color);
-                    
+
                 }
             }
 
@@ -260,10 +262,19 @@
             //     // $(this).children().children(".evo-popup").addClass(".picker");
             //     $(this).children().children(".evo-pop").css("background: white", " border-radius: 5px ");
             // })
-            
+
             $('#cpEvent').children().children(".evo-pop").addClass(".picker")
-            
+
         })
+
+        function readJsonFileColorThemes() {
+
+        }
+
+        function writeLocalFile() {
+          
+            
+        }
     </script>
     <style type="stylesheet">
         .picker {
