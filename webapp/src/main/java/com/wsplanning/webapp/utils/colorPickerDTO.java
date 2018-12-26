@@ -12,4 +12,7 @@ public class colorPickerDTO {
     @JsonProperty("colorCode")
     public String colorCode;
 
+    @JsonProperty("siteId")
+    public String siteId;
+
 }

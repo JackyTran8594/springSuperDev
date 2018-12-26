@@ -35,10 +35,13 @@ public class ColorPicker {
             // jsonObject.
             objArray = jsonObject.getAsJsonArray();
             objArray.forEach(item -> {
-                
-                if (item.getAsJsonObject().get("username").toString() == obj.username) {
-                    // item.getAsJsonObject().get("colorCode").
+                String username = item.getAsJsonObject().get("username").toString();
+                String siteId = item.getAsJsonObject().get("siteId").toString();
+                if (item instanceof JsonObject) {
+                    JsonObject o = (JsonObject) item;
+                    // if(item.has)
                 }
+
             });
             // objArray.
             // objArray.add(obj.toString());
