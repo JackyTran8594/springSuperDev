@@ -3,16 +3,16 @@ package com.wsplanning.webapp.utils;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+// @JsonIgnoreProperties(ignoreUnknown = true)
 public class colorPickerDTO {
     
-    @JsonProperty("username")
+    // @JsonProperty("username")
     public String username;
 
-    @JsonProperty("colorCode")
+    // @JsonProperty("colorCode")
     public String colorCode;
 
-    @JsonProperty("siteId")
+    // @JsonProperty("siteId")
     public String siteId;
 
 }

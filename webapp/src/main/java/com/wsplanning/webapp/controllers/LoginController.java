@@ -17,7 +17,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
         String listSite = siteClient.getSites();
-    
+        // jsonFileColorThemes(request.);
         // String referrer = request.getHeader("Referer");
         // request.getSession().setAttribute("url_prior_login", referrer);
 

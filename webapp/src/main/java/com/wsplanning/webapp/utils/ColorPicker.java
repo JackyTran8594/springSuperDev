@@ -1,51 +1,58 @@
 package com.wsplanning.webapp.utils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-
-import groovyjarjarcommonscli.ParseException;
-
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 public class ColorPicker {
 
-    public static JsonArray jsonFileColorThemes(colorPickerDTO obj) throws IOException {
+    public static String jsonFileColorThemes(colorPickerDTO obj) throws IOException {
 
         Path file = Paths.get("src/main/resources/static/colorPickerData.json");
-        JsonArray objArray = new JsonArray();
+        Gson gson = new Gson();
+        int tempCount = 0;
 
         if (file == null) {
-            objArray.add(obj.toString());
+
+            // convert object to json
+            String jObject = gson.toJson(obj);
             FileWriter jsonfile = new FileWriter(file.toString());
-            jsonfile.write(objArray.toString());
-            return objArray;
-        } else {
-
-            JsonParser parser = new JsonParser();
-            Object object = parser.parse(new FileReader(file.toString()));
-            JsonObject jsonObject = (JsonObject) object;
-            // jsonObject.
-            objArray = jsonObject.getAsJsonArray();
-            objArray.forEach(item -> {
-                String username = item.getAsJsonObject().get("username").toString();
-                String siteId = item.getAsJsonObject().get("siteId").toString();
-                if (item instanceof JsonObject) {
-                    JsonObject o = (JsonObject) item;
-                    // if(item.has)
+            jsonfile.write(jObject);        
+            return jObject;
+        } else {           
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file.toString()));
+            // using arrays
+            // colorPickerDTO[] colorArray = gson.fromJson(bufferedReader.toString(),
+            // colorPickerDTO[].class);
+          
+            // using lists
+            // In order for Gson to understand the List structure correctly. You've to
+            // figure out its type.
+            Type colorPickerListType = new TypeToken<ArrayList<colorPickerDTO>>() {
+            }.getType();
+            List<colorPickerDTO> colorList = gson.fromJson(bufferedReader.toString(), colorPickerListType);
+            String jObject = gson.toJson(colorList);
+            colorList.forEach(item -> {
+                if (item.username == obj.username && item.siteId == obj.siteId) {
+                    item.colorCode = obj.colorCode;
+                } else {
+                    int i = tempCount + 1;
+                    i = tempCount;
                 }
-
             });
-            // objArray.
-            // objArray.add(obj.toString());
-            return objArray;
+
+            if (tempCount > 0) {
+             gson.toJson(obj, new FileWriter(file.toString()));                
+            };
+            return jObject;
         }
 
     }
