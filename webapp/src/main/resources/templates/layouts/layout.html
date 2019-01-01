@@ -130,6 +130,11 @@
     console.log("ready!");
     $(".formValidate").validate(common.formValidate);
   });
+
+  function getData() {
+      var colorPicker = localStorage.getItem('colorPicker');
+      console.log(colorPicker);
+  }
 </script>
 </body>
 </html>

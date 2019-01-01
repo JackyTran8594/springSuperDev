@@ -1,6 +1,8 @@
 package com.wsplanning.webapp.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,20 +14,33 @@ import java.util.List;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class ColorPicker {
 
-    public static String jsonFileColorThemes(colorPickerDTO obj) throws IOException {
+    public String jsonFileColorThemes(colorPickerDTO obj) throws IOException {
 
-        Path file = Paths.get("src/main/resources/static/colorPickerData.json");
+        String pathFile = "C:/Users/JACKYTRAN/Desktop/WSPlanerSuperDev/webapp/src/main/resources/colorPickerData.json";
+        Path file = Paths.get(pathFile);
         Gson gson = new Gson();
         int tempCount = 0;
-
-        if (file == null) {
+        boolean ex = file.toFile().exists();
+        
+        if (ex == false) {
 
             // convert object to json
             String jObject = gson.toJson(obj);
-            FileWriter jsonfile = new FileWriter(file.toString());
-            jsonfile.write(jObject);        
+            FileWriter jsonfile = new FileWriter(pathFile);
+            try {
+                BufferedWriter bufferedWriter = new BufferedWriter(jsonfile);
+                bufferedWriter.write(jObject);
+                bufferedWriter.close();
+            } catch (Exception e) {
+                //TODO: handle exception
+            }         
+            // jsonfile.write(jObject);        
             return jObject;
         } else {           
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file.toString()));

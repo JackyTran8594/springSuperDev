@@ -1,4 +1,4 @@
-var UserWebApp = angular.module('UserWebApp', ['loginModule',
+var UserWebApp = angular.module('UserWebApp', [
     'ngSanitize',
     'ui.bootstrap',
     'checklist-model',
@@ -10,8 +10,29 @@ var UserWebApp = angular.module('UserWebApp', ['loginModule',
     'ui.select'
 ]);
 
-UserWebApp.run(['uiSelect2Config', '$translate', 'mdColorPicker', function (uiSelect2Config, $translate, mdColorPicker) {
+UserWebApp.run(['uiSelect2Config', '$translate', '$rootScope', function (uiSelect2Config, $translate, $rootScope) {
     uiSelect2Config.placeholder = $translate.instant('placeholderSelect');
+
+    // var formData = new FormData();
+    // var header = formData.getheader();
+    // var username = formData.get('username');
+    // var siteId = formData.get('siteId');
+    // debugger;
+    // var objLogin = {
+    //     username: username,
+    //     siteId: siteId
+    // }
+
+    var colorObjectArray = JSON.parse(localStorage.getItem('colorPicker'));
+    $rootScope.colorCode = colorObjectArray[0].colorCode;
+
+    // colorObjectArray.forEach(item => {
+    //     if (item.username == objLogin.username && item.siteId == objLogin.siteId) {
+    //         $rootScope.colorCode = item.colorCode;
+    //     }
+    // });
+
+
 
     $('.select2').select2({
         placeholder: $translate.instant('placeholderSelect')

@@ -97,8 +97,8 @@
                         </div>
 
                         <div class="form-group has-feedback has-feedback-left">
-                            <input type="text" class="form-control" placeholder="Username" name="username" required="required"
-                                autofocus onkeypress="checkSubmit(event)">
+                            <input type="text" class="form-control" placeholder="Username" name="username" id="username"
+                                required="required" autofocus onkeypress="checkSubmit(event)">
                             <div class="form-control-feedback">
                                 <i class="icon-user text-muted"></i>
                             </div>
@@ -133,7 +133,7 @@
 
                         <div class="form-group">
                             <div id="cpEvent" class="form-control">
-                                <input id="cpBinding" /><br />
+                                <input id="cpBinding" type="text" /><br />
                             </div>
                         </div>
                         <!--<div class="form-group">-->
@@ -222,16 +222,53 @@
             });
         });
 
+
+
         function checkSubmit(e) {
             if (e.keyCode == 13) {
                 onLogin();
             }
         }
 
+
+
         function onLogin() {
-            debugger;
-            writeLocalFile();
             if ($("#frmLogin").valid()) {
+                var username = $("#username").val();
+                var siteId = $("#siteId").val();
+                var colorCode = $("#cpBinding").val();
+                // console.log(username);
+                // console.log(siteId);
+                // console.log(colorCode);
+                var objectJson = {
+                    username: username,
+                    siteId: siteId,
+                    colorCode: colorCode
+                }
+
+                var myObjectArray = [];
+                myObjectArray.push(objectJson)
+                localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
+
+                // function checkLocalStorage() {
+                //     var objArray = JSON.parse(localStorage.getItem("colorPicker"));
+                //     var count = 0;
+                //     if (objArray == null) {
+                //         localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
+                //     } else {
+                //         objArray.forEach(item => {
+                //             if (item.username == objectJson.username && item.siteId == objectJson.siteId) {
+                //                 item.colorCode = objectJson.colorCode;
+                //             } else {
+                //                 count++;
+                //             }
+                //         });
+                //         if (count > 0) {
+                //             objArray.push(objectJson);
+                //         }
+                //     }
+                // }
+
                 common.btnLoading($("#btnLogin"), true);
                 $("#frmLogin").submit();
 
@@ -239,7 +276,6 @@
         }
 
         $(document).ready(function () {
-
             function setColor(evt, color) {
                 if (color) {
                     $('#cpEvent').css('background-color', color);
@@ -257,31 +293,10 @@
                 color: '#ebf1dd'
             })
 
-
-            // $('#cpEvent').focus(function () {
-            //     // $(this).children().children(".evo-popup").addClass(".picker");
-            //     $(this).children().children(".evo-pop").css("background: white", " border-radius: 5px ");
-            // })
-
-            $('#cpEvent').children().children(".evo-pop").addClass(".picker")
-
         })
 
-        function readJsonFileColorThemes() {
 
-        }
-
-        function writeLocalFile() {
-          
-            
-        }
     </script>
-    <style type="stylesheet">
-        .picker {
-            background: white !important;
-            border-radius: 5px !important;
-        }
-    </style>
 </body>
 
 </html>
